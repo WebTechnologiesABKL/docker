@@ -7,6 +7,7 @@ services:
     container_name: weather
     expose:
       - "8090"
+    restart: always
 
   backend:
     image: registry.gitlab.com/webtechnologiesabkl/registry/backend:latest
@@ -17,3 +18,5 @@ services:
       - "8085"
     links:
       - weather:weather
+    restart: always
+

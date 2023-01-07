@@ -20,3 +20,11 @@ services:
       - weather:weather
     restart: always
 
+  website:
+    image: registry.gitlab.com/webtechnologiesabkl/registry/website:latest
+    container_name: website
+    ports:
+      - "80:80"
+    expose:
+      - "80"
+    restart: always

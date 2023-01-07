@@ -1,0 +1,17 @@
+---
+version: '3'
+services:
+
+  weather:
+    image: registry.gitlab.com/webtechnologiesabkl/registry/weather:latest
+    container_name: weather
+    expose:
+      - "8090"
+
+  authserver:
+    image: registry.gitlab.com/webtechnologiesabkl/registry/backend:latest
+    container_name: authserver
+    ports:
+      - "8085:8085"
+    expose:
+      - "8085"

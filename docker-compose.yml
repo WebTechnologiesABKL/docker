@@ -8,10 +8,12 @@ services:
     expose:
       - "8090"
 
-  authserver:
+  backend:
     image: registry.gitlab.com/webtechnologiesabkl/registry/backend:latest
-    container_name: authserver
+    container_name: backend
     ports:
       - "8085:8085"
     expose:
       - "8085"
+    links:
+      - weather:weather

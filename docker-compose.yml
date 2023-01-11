@@ -19,6 +19,8 @@ services:
   rasa:
     image: registry.gitlab.com/webtechnologiesabkl/registry/rasa:latest
     container_name: rasa
+    ports:
+      - "5005:5005"
     expose:
       - "5005"
     links:

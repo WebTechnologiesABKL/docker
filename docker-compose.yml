@@ -9,12 +9,23 @@ services:
       - "8090"
     restart: always
 
+  duckling:
+    image: registry.gitlab.com/webtechnologiesabkl/registry/duckling:latest
+    container_name: duckling
+    expose:
+      - "8000"
+    restart: always
+
   rasa:
     image: registry.gitlab.com/webtechnologiesabkl/registry/rasa:latest
     container_name: rasa
     expose:
       - "5005"
+    links:
+      - duckling:duckling
     restart: always
+    depends_on:
+      - duckling
 
   backend:
     image: registry.gitlab.com/webtechnologiesabkl/registry/backend:latest
@@ -27,6 +38,10 @@ services:
       - weather:weather
       - rasa:rasa
     restart: always
+    depends_on:
+      - rasa
+      - duckling
+      - weather
 
   website:
     image: registry.gitlab.com/webtechnologiesabkl/registry/website:latest
@@ -36,3 +51,8 @@ services:
     expose:
       - "80"
     restart: always
+    depends_on:
+      - rasa
+      - duckling
+      - weather
+      - backend

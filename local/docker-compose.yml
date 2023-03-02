@@ -1,0 +1,58 @@
+---
+version: '3'
+services:
+
+  weather:
+    image: webtechnologiesabklweatherservice
+    container_name: weather
+    expose:
+      - "8090"
+    restart: always
+
+  duckling:
+    image: webtechnologiesabklduckling
+    container_name: duckling
+    expose:
+      - "8000"
+    restart: always
+
+  rasa:
+    image: webtechnologiesabklrasa
+    container_name: rasa
+    expose:
+      - "5005"
+    links:
+      - duckling:duckling
+    restart: always
+    depends_on:
+      - duckling
+
+  backend:
+    image: webtechnologiesabklbackend
+    container_name: backend
+    ports:
+      - "8085:8085"
+    expose:
+      - "8085"
+    links:
+      - weather:weather
+      - rasa:rasa
+    restart: always
+    depends_on:
+      - rasa
+      - duckling
+      - weather
+
+  website:
+    image: webtechnologiesabklwebsite
+    container_name: website
+    ports:
+      - "80:80"
+    expose:
+      - "80"
+    restart: always
+    depends_on:
+      - rasa
+      - duckling
+      - weather
+      - backend

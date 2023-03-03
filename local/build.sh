@@ -1,4 +1,5 @@
 #!/bin/bash
+#Patrick Langkau
 echo "Installing npm (if not installed)"
 apt-get update
 apt-get install npm -y

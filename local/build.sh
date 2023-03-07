@@ -23,7 +23,7 @@ cd ..
 echo "------------------------------------------------------------"
 echo "Building WeatherService"
 echo "------------------------------------------------------------"
-cd WeatherService
+cd WeatherServer
 npm install
 docker build . -t webtechnologiesabklweatherservice
 cd ..
@@ -49,7 +49,7 @@ cd ..
 echo "------------------------------------------------------------"
 echo "Building RASA"
 echo "------------------------------------------------------------"
-cd RASA_Docker
+cd RASA
 docker build . -t webtechnologiesabklrasa
 cd ..
 

@@ -1,5 +1,9 @@
 # Docker
-### For the Scripts to work, the following prerequisites are necessary:
+### For the Scripts to work (in the local folder), the following prerequisites are necessary:
+- Run the scripts as sudo
+- The scripts need to be run from inside the local folder
+- First run the Build.sh script, then the Run.sh script
+- After running the Run.sh script, open your Webbrowser and navigate to localhost:80
 - The following folder structure
 ```
 ├── Backend
@@ -7,7 +11,7 @@
 │   ├── package-lock.json
 │   ├── package.json
 │   └── server.js
-├── RASA_Docker
+├── RASA
 │   ├── Dockerfile
 │   ├── actions
 │   ├── config.yml
